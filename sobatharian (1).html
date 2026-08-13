@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SobatHarian - Sahabat untuk Bumi</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f4f8f4;
+            color: #26382c;
+            line-height: 1.6;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.96);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1b5e20;
+        }
+
+        .logo span {
+            color: #66bb6a;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #304536;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #2e7d32;
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #1b5e20;
+        }
+
+        /* ================= GENERAL ================= */
+
+        section {
+            min-height: 100vh;
+            padding: 110px 7% 70px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #1b5e20;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #607568;
+        }
+
+        /* ================= HERO ================= */
+
+        #home {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+
+            background:
+                linear-gradient(rgba(27,94,32,0.88), rgba(13,61,18,0.92)),
+                url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero {
+            max-width: 850px;
+        }
+
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #a5d6a7;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #e8f5e9;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 28px;
+            border-radius: 50px;
+            background: #66bb6a;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #43a047;
+            transform: translateY(-3px);
+        }
+
+        /* ================= VISI MISI ================= */
+
+        #visimisi {
+            background: white;
+        }
+
+        .vm-grid {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .vm-card {
+            padding: 35px;
+            background: #f4faf4;
+            border-radius: 18px;
+            border-top: 5px solid #4caf50;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            transition: 0.3s;
+        }
+
+        .vm-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .vm-card i {
+            font-size: 2.5rem;
+            color: #43a047;
+            margin-bottom: 15px;
+        }
+
+        .vm-card h3 {
+            color: #1b5e20;
+            margin-bottom: 12px;
+            font-size: 1.5rem;
+        }
+
+        /* ================= MASALAH ================= */
+
+        #masalah {
+            background: #edf6ee;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            transition: 0.3s;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .problem-card i {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            background: #e8f5e9;
+            color: #2e7d32;
+            font-size: 2rem;
+        }
+
+        .problem-card h3 {
+            color: #1b5e20;
+            margin-bottom: 10px;
+        }
+
+        /* ================= SOLUSI ================= */
+
+        #solusi {
+            background: white;
+        }
+
+        .solution-container {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .solution-card {
+            padding: 28px;
+            border-radius: 16px;
+            background: #f7fbf7;
+            border-left: 5px solid #66bb6a;
+        }
+
+        .solution-card h3 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+
+        .solution-card i {
+            margin-right: 8px;
+        }
+
+        /* ================= AKSI HIJAU ================= */
+
+        #aksi {
+            background: linear-gradient(135deg, #1b5e20, #2e7d32);
+            color: white;
+            text-align: center;
+        }
+
+        #aksi .section-title h2 {
+            color: white;
+        }
+
+        #aksi .section-title p {
+            color: #dcedc8;
+        }
+
+        .action-box {
+            max-width: 900px;
+            margin: auto;
+            background: rgba(255,255,255,0.12);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .action-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .action-list {
+            margin: 25px 0;
+            text-align: left;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .action-list p {
+            padding: 12px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+
+        .action-list i {
+            color: #c8e6c9;
+            margin-right: 8px;
+        }
+
+        /* ================= KONTAK / IDE ================= */
+
+        #kontak {
+            background: #f5faf5;
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info {
+            padding: 30px;
+        }
+
+        .contact-info h3 {
+            color: #1b5e20;
+            font-size: 1.7rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+        }
+
+        .contact-info i {
+            width: 25px;
+            color: #43a047;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 7px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #c8d8ca;
+            border-radius: 10px;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #43a047;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #123d17;
+            color: #c8e6c9;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 900px) {
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                right: 5%;
+                width: 220px;
+                padding: 20px;
+                background: white;
+                border-radius: 12px;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .problem-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .vm-grid,
+            .solution-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .action-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            section {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .problem-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header>
+
+        <div class="logo">
+            Sobat<span>Harian</span> 🌱
+        </div>
+
+        <nav>
+            <ul id="navMenu">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#visimisi">Visi & Misi</a></li>
+                <li><a href="#masalah">Masalah</a></li>
+                <li><a href="#solusi">Solusi</a></li>
+                <li><a href="#aksi">Aksi Hijau</a></li>
+                <li><a href="#kontak">Bagikan Ide</a></li>
+            </ul>
+        </nav>
+
+        <div class="menu-btn" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+    </header>
+
+
+    <!-- ================= HOME ================= -->
+
+    <section id="home">
+
+        <div class="hero">
+
+            <div class="hero-icon">
+                🌱
+            </div>
+
+            <h1>
+                Bersama Menjaga Bumi,
+                <span>Mulai dari Hal Kecil</span>
+            </h1>
+
+            <p>
+                SobatHarian hadir sebagai teman digital yang membantu
+                masyarakat mengenali permasalahan lingkungan dan
+                menerapkan kebiasaan sederhana untuk menjaga bumi.
+            </p>
+
+            <a href="#masalah" class="btn">
+                <i class="fa-solid fa-leaf"></i>
+                Mulai Peduli
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= VISI MISI ================= -->
+
+    <section id="visimisi">
+
+        <div class="section-title">
+
+            <h2>Visi & Misi</h2>
+
+            <p>
+                Membangun kebiasaan kecil untuk menciptakan lingkungan yang lebih baik.
+            </p>
+
+        </div>
+
+        <div class="vm-grid">
+
+            <div class="vm-card">
+
+                <i class="fa-solid fa-earth-asia"></i>
+
+                <h3>Visi</h3>
+
+                <p>
+                    Mewujudkan masyarakat yang sadar lingkungan,
+                    bertanggung jawab, dan aktif menjaga kelestarian
+                    bumi melalui kebiasaan sederhana dalam kehidupan sehari-hari.
+                </p>
+
+            </div>
+
+
+            <div class="vm-card">
+
+                <i class="fa-solid fa-seedling"></i>
+
+                <h3>Misi</h3>
+
+                <p>
+                    1. Meningkatkan kesadaran mengenai pentingnya lingkungan.
+                    <br><br>
+                    2. Memberikan solusi sederhana terhadap masalah lingkungan.
+                    <br><br>
+                    3. Mengajak masyarakat melakukan aksi nyata secara konsisten.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MASALAH LINGKUNGAN ================= -->
+
+    <section id="masalah">
+
+        <div class="section-title">
+
+            <h2>Masalah Lingkungan</h2>
+
+            <p>
+                Beberapa masalah lingkungan yang sering kita temui setiap hari.
+            </p>
+
+        </div>
+
+
+        <div class="problem-grid">
+
+            <div class="problem-card">
+
+                <i class="fa-solid fa-trash"></i>
+
+                <h3>Sampah</h3>
+
+                <p>
+                    Sampah yang tidak dikelola dengan baik dapat
+                    mencemari tanah, air, dan lingkungan sekitar.
+                </p>
+
+            </div>
+
+
+            <div class="problem-card">
+
+                <i class="fa-solid fa-bottle-water"></i>
+
+                <h3>Sampah Plastik</h3>
+
+                <p>
+                    Penggunaan plastik sekali pakai yang berlebihan
+                    dapat meningkatkan pencemaran lingkungan.
+                </p>
+
+            </div>
+
+
+            <div class="problem-card">
+
+                <i class="fa-solid fa-droplet"></i>
+
+                <h3>Pemborosan Air</h3>
+
+                <p>
+                    Penggunaan air secara berlebihan dapat menyebabkan
+                    pemborosan sumber daya yang sangat penting.
+                </p>
+
+            </div>
+
+
+            <div class="problem-card">
+
+                <i class="fa-solid fa-bolt"></i>
+
+                <h3>Pemborosan Energi</h3>
+
+                <p>
+                    Penggunaan listrik yang tidak diperlukan dapat
+                    meningkatkan konsumsi energi.
+                </p>
+
+            </div>
+
+
+            <div class="problem-card">
+
+                <i class="fa-solid fa-tree"></i>
+
+                <h3>Kurangnya Ruang Hijau</h3>
+
+                <p>
+                    Berkurangnya area hijau dapat memengaruhi kualitas
+                    udara dan keseimbangan lingkungan.
+                </p>
+
+            </div>
+
+
+            <div class="problem-card">
+
+                <i class="fa-solid fa-smog"></i>
+
+                <h3>Pencemaran Udara</h3>
+
+                <p>
+                    Asap kendaraan dan aktivitas tertentu dapat
+                    menyebabkan kualitas udara menurun.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SOLUSI ================= -->
+
+    <section id="solusi">
+
+        <div class="section-title">
+
+            <h2>Solusi Sederhana</h2>
+
+            <p>
+                Perubahan besar dapat dimulai dari kebiasaan kecil.
+            </p>
+
+        </div>
+
+
+        <div class="solution-container">
+
+            <div class="solution-card">
+
+                <h3>
+                    <i class="fa-solid fa-recycle"></i>
+                    Pilah Sampah
+                </h3>
+
+                <p>
+                    Pisahkan sampah organik dan anorganik agar
+                    lebih mudah dikelola dan didaur ulang.
+                </p>
+
+            </div>
+
+
+            <div class="solution-card">
+
+                <h3>
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    Kurangi Plastik
+                </h3>
+
+                <p>
+                    Gunakan tas belanja dan botol minum yang
+                    dapat digunakan kembali.
+                </p>
+
+            </div>
+
+
+            <div class="solution-card">
+
+                <h3>
+                    <i class="fa-solid fa-faucet"></i>
+                    Hemat Air
+                </h3>
+
+                <p>
+                    Tutup keran setelah digunakan dan gunakan
+                    air secukupnya dalam aktivitas sehari-hari.
+                </p>
+
+            </div>
+
+
+            <div class="solution-card">
+
+                <h3>
+                    <i class="fa-solid fa-lightbulb"></i>
+                    Hemat Energi
+                </h3>
+
+                <p>
+                    Matikan lampu dan perangkat elektronik ketika
+                    tidak sedang digunakan.
+                </p>
+
+            </div>
+
+
+            <div class="solution-card">
+
+                <h3>
+                    <i class="fa-solid fa-seedling"></i>
+                    Menanam Pohon
+                </h3>
+
+                <p>
+                    Menanam dan merawat tanaman membantu menciptakan
+                    lingkungan yang lebih hijau.
+                </p>
+
+            </div>
+
+
+            <div class="solution-card">
+
+                <h3>
+                    <i class="fa-solid fa-person-walking"></i>
+                    Kurangi Kendaraan
+                </h3>
+
+                <p>
+                    Jika memungkinkan, berjalan kaki atau bersepeda
+                    untuk jarak dekat.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= AKSI HIJAU ================= -->
+
+    <section id="aksi">
+
+        <div class="section-title">
+
+            <h2>Aksi Hijau</h2>
+
+            <p>
+                Tidak perlu menunggu orang lain. Kita bisa mulai dari diri sendiri.
+            </p>
+
+        </div>
+
+
+        <div class="action-box">
+
+            <h3>
+                🌍 Tantangan 7 Hari Peduli Lingkungan
+            </h3>
+
+            <p>
+                Coba lakukan beberapa kebiasaan sederhana berikut
+                selama satu minggu.
+            </p>
+
+
+            <div class="action-list">
+
+                <p>
+                    <i class="fa-solid fa-check"></i>
+                    Bawa botol minum sendiri
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-check"></i>
+                    Kurangi penggunaan plastik
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-check"></i>
+                    Buang sampah sesuai jenisnya
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-check"></i>
+                    Matikan lampu saat tidak digunakan
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-check"></i>
+                    Hemat penggunaan air
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-check"></i>
+                    Rawat tanaman di sekitar rumah
+                </p>
+
+            </div>
+
+
+            <button class="btn" onclick="aksiHijau()">
+                <i class="fa-solid fa-seedling"></i>
+                Saya Siap Ikut!
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= BAGIKAN IDE ================= -->
+
+    <section id="kontak">
+
+        <div class="section-title">
+
+            <h2>Bagikan Ide Peduli Lingkungan 🌱</h2>
+
+            <p>
+                Punya ide sederhana untuk membuat lingkungan menjadi lebih baik?
+                Bagikan idemu kepada kami.
+            </p>
+
+        </div>
+
+
+        <div class="contact-container">
+
+            <div class="contact-info">
+
+                <h3>Setiap Ide Berarti 🌍</h3>
+
+                <p>
+                    Perubahan besar dapat dimulai dari satu ide kecil.
+                    Ceritakan kebiasaan atau kegiatan yang menurutmu
+                    dapat membantu menjaga lingkungan.
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-lightbulb"></i>
+                    Ide kecil, dampak besar
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-seedling"></i>
+                    Mulai dari diri sendiri
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-earth-asia"></i>
+                    Bersama menjaga bumi
+                </p>
+
+            </div>
+
+
+            <div class="contact-form">
+
+                <form onsubmit="handleSubmit(event)">
+
+                    <div class="form-group">
+
+                        <label for="kategori">
+                            Pilih Topik
+                        </label>
+
+                        <select id="kategori" required>
+
+                            <option value="">
+                                -- Pilih topik --
+                            </option>
+
+                            <option value="Sampah">
+                                ♻️ Sampah & Daur Ulang
+                            </option>
+
+                            <option value="Air">
+                                💧 Penghematan Air
+                            </option>
+
+                            <option value="Energi">
+                                ⚡ Hemat Energi
+                            </option>
+
+                            <option value="Tanaman">
+                                🌱 Penghijauan
+                            </option>
+
+                            <option value="Plastik">
+                                🛍️ Pengurangan Plastik
+                            </option>
+
+                            <option value="Lainnya">
+                                💡 Ide Lainnya
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="pesan">
+                            Ide atau Saran Kamu
+                        </label>
+
+                        <textarea
+                            id="pesan"
+                            rows="6"
+                            placeholder="Contoh: Saya ingin mengadakan kegiatan menanam pohon di lingkungan sekolah..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <button type="submit" class="btn" style="width:100%;">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        Kirim Ide
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 <strong>SobatHarian</strong> —
+            Bersama Menjaga Bumi, Mulai dari Hal Kecil 🌱
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        // Menu mobile
+        function toggleMenu() {
+
+            const menu = document.getElementById("navMenu");
+
+            menu.classList.toggle("active");
+
+        }
+
+
+        // Tombol aksi hijau
+        function aksiHijau() {
+
+            alert(
+                "🌱 Mantap! Kamu siap menjadi bagian dari perubahan.\n\n" +
+                "Ingat: menjaga lingkungan tidak harus dimulai dari hal besar.\n\n" +
+                "Mulai dari satu kebiasaan kecil hari ini!"
+            );
+
+        }
+
+
+        // Form Bagikan Ide
+        function handleSubmit(event) {
+
+            event.preventDefault();
+
+            const kategori = document.getElementById("kategori").value;
+
+            alert(
+                "🌱 Terima kasih!\n\n" +
+                "Ide kamu tentang " + kategori +
+                " sudah berhasil dicatat.\n\n" +
+                "Setiap ide kecil dapat menjadi langkah besar untuk menjaga bumi! 🌍"
+            );
+
+            event.target.reset();
+
+        }
+
+
+        // Menutup menu setelah memilih navigasi
+        document.querySelectorAll("nav a").forEach(function(link) {
+
+            link.addEventListener("click", function() {
+
+                document.getElementById("navMenu")
+                    .classList.remove("active");
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
